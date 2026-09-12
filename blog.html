@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Bengali IT | Digital Products Tips & Guides Bangladesh</title>
+  <meta name="description" content="Read expert guides on Windows 11, Office 365, antivirus software, and digital tools. Tips, tutorials, and news from Bengali IT." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4f46e5',
+            secondary: '#7c3aed',
+            accent: '#22c55e',
+            dark: '#0f0e1a',
+            dark2: '#1a1830',
+          },
+          fontFamily: { sans: ['Inter', 'Poppins', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>" />
+
+  <style>
+    .blog-card { background: var(--dark2); border: 1px solid var(--glass-border); border-radius: 20px; overflow: hidden; transition: all 0.35s ease; }
+    .blog-card:hover { transform: translateY(-8px); border-color: rgba(79,70,229,0.5); box-shadow: 0 20px 60px rgba(79,70,229,0.2); }
+    .blog-cover { width:100%; height:200px; object-fit:cover; transition: transform 0.4s ease; }
+    .blog-card:hover .blog-cover { transform: scale(1.05); }
+    .blog-category { display:inline-block; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.7rem; font-weight:700; letter-spacing:0.04em; }
+    .cat-windows   { background:rgba(59,130,246,0.15); color:#60a5fa; border:1px solid rgba(59,130,246,0.3); }
+    .cat-security  { background:rgba(239,68,68,0.12);  color:#f87171;  border:1px solid rgba(239,68,68,0.3); }
+    .cat-design    { background:rgba(168,85,247,0.12); color:#c084fc;  border:1px solid rgba(168,85,247,0.3); }
+    .cat-tips      { background:rgba(34,197,94,0.12);  color:#4ade80;  border:1px solid rgba(34,197,94,0.3); }
+    .cat-office    { background:rgba(245,158,11,0.12); color:#fbbf24;  border:1px solid rgba(245,158,11,0.3); }
+    .blog-title { font-weight:700; font-size:1.05rem; color:#f1f5f9; line-height:1.4; }
+    .blog-title:hover { color:#a5b4fc; }
+    .blog-excerpt { font-size:0.85rem; color:#94a3b8; line-height:1.6; }
+    .blog-meta { font-size:0.75rem; color:#64748b; }
+    .featured-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:50px; padding:0.25rem 0.7rem; font-size:0.7rem; font-weight:700; color:#fbbf24; }
+    .tag-pill { display:inline-block; background:rgba(255,255,255,0.05); border:1px solid var(--glass-border); border-radius:50px; padding:0.35rem 0.85rem; font-size:0.75rem; color:#94a3b8; cursor:pointer; transition:all 0.2s; }
+    .tag-pill:hover, .tag-pill.active { background:rgba(79,70,229,0.15); border-color:rgba(79,70,229,0.4); color:#a5b4fc; }
+    .newsletter-box { background:linear-gradient(135deg,rgba(79,70,229,0.12),rgba(124,58,237,0.08)); border:1px solid rgba(79,70,229,0.25); border-radius:20px; padding:2.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ════ NAVBAR ════ -->
+  <nav id="navbar" class="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Bengali IT Home">
+          <img src="assets/images/logo.png" alt="Bengali IT Logo" class="h-9 w-auto rounded-lg" onerror="this.style.display='none'" />
+          <span class="nav-logo">Bengali IT</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="index.html"         class="nav-link" id="nav-home">Home</a>
+          <a href="index.html#products" class="nav-link" id="nav-products">Products</a>
+          <a href="blog.html"          class="nav-link" id="nav-blog" style="color:#fff;">Blog</a>
+          <div class="dropdown">
+            <button class="nav-link flex items-center gap-1" id="nav-services">
+              Services
+              <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="domain-hosting.html" class="dropdown-item" id="nav-domain">🌐 Domain & Hosting</a>
+              <a href="#"                   class="dropdown-item" id="nav-seo">📈 SEO Services</a>
+              <a href="#"                   class="dropdown-item" id="nav-support">🛠️ Tech Support</a>
+              <a href="#"                   class="dropdown-item" id="nav-graphic">🎨 Graphic Design</a>
+            </div>
+          </div>
+          <a href="account.html" class="nav-link" id="nav-account">Account</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="index.html#products" class="hidden sm:inline-flex btn-primary text-sm py-2.5 px-5" id="nav-shop">🛒 Shop Now</a>
+          <button id="menu-btn" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition" aria-label="Toggle mobile menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <a href="index.html"          class="mobile-nav-link" id="mob-home">🏠 Home</a>
+      <a href="index.html#products" class="mobile-nav-link" id="mob-products">📦 Products</a>
+      <a href="domain-hosting.html" class="mobile-nav-link" id="mob-domain">🌐 Domain & Hosting</a>
+      <a href="blog.html"           class="mobile-nav-link" id="mob-blog">📝 Blog</a>
+      <a href="account.html"        class="mobile-nav-link" id="mob-account">👤 Account</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════ BLOG HERO ════ -->
+    <section style="background:linear-gradient(135deg,#0f0e1a 0%,#1a1040 60%,#0f0e1a 100%);padding:4rem 0 3rem;border-bottom:1px solid var(--glass-border);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <div class="section-tag mx-auto inline-block mb-4">📝 Knowledge Base</div>
+        <h1 class="section-title mb-3">Bengali IT <span style="background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Blog & Guides</span></h1>
+        <p class="text-gray-400 max-w-xl mx-auto">Expert tips, tutorials, and news about Windows, Office, antivirus, design tools, and all things digital.</p>
+
+        <!-- Search Bar -->
+        <div class="flex max-w-md mx-auto mt-8 gap-3">
+          <input id="blog-search" type="text" placeholder="Search articles..." class="flex-1 px-4 py-3 rounded-xl text-white placeholder-gray-500 outline-none text-sm" style="background:var(--dark2);border:1px solid var(--glass-border);" />
+          <button class="btn-primary px-5 py-3 rounded-xl" id="blog-search-btn">🔍</button>
+        </div>
+
+        <!-- Topic Tags -->
+        <div class="flex flex-wrap justify-center gap-2 mt-5">
+          <span class="tag-pill active" data-tag="all"   id="tag-all">All Posts</span>
+          <span class="tag-pill" data-tag="windows"      id="tag-windows">🪟 Windows</span>
+          <span class="tag-pill" data-tag="security"     id="tag-security">🛡️ Security</span>
+          <span class="tag-pill" data-tag="design"       id="tag-design">🎨 Design</span>
+          <span class="tag-pill" data-tag="office"       id="tag-office">📊 Office</span>
+          <span class="tag-pill" data-tag="tips"         id="tag-tips">💡 Tips</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ BLOG GRID ════ -->
+    <section class="section-pad">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+          <!-- ── MAIN BLOG FEED (2/3 width) ── -->
+          <div class="lg:col-span-2 space-y-6">
+
+            <!-- Featured Post -->
+            <article class="blog-card" id="post-featured" data-tag="windows">
+              <div class="overflow-hidden">
+                <div class="blog-cover flex items-center justify-center"
+                     style="background:linear-gradient(135deg,#0f0e1a,#1a1040,#2d2060);">
+                  <div class="text-center">
+                    <div style="font-size:4rem;">🪟</div>
+                    <div style="color:#818cf8;font-weight:800;font-size:1.2rem;margin-top:0.5rem;">Windows 11</div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="featured-badge">⭐ Featured</span>
+                  <span class="blog-category cat-windows">WINDOWS</span>
+                </div>
+                <h2 class="blog-title text-xl mb-3">
+                  <a href="#" id="post-featured-link">Windows 11 Pro vs Home: Which One Should You Buy in 2024?</a>
+                </h2>
+                <p class="blog-excerpt mb-4">
+                  Confused about whether to get Windows 11 Pro or Home? This complete guide breaks down every difference — from BitLocker encryption to Remote Desktop — and helps you decide which version is worth your money in Bangladesh.
+                </p>
+                <div class="flex items-center justify-between">
+                  <div class="blog-meta flex items-center gap-3">
+                    <div class="w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white">R</div>
+                    <span>Rahim Uddin</span>
+                    <span>·</span>
+                    <span>Sep 10, 2024</span>
+                    <span>·</span>
+                    <span>8 min read</span>
+                  </div>
+                  <a href="#" class="text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition" id="post-featured-read">Read More →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card" id="post-antivirus" data-tag="security">
+              <div class="grid grid-cols-1 sm:grid-cols-3">
+                <div class="overflow-hidden sm:rounded-l-[20px]">
+                  <div class="blog-cover flex items-center justify-center sm:h-full"
+                       style="background:linear-gradient(135deg,#1a0000,#3b0000,#6b0000);min-height:160px;">
+                    <div class="text-center">
+                      <div style="font-size:3rem;">🛡️</div>
+                      <div style="color:#f87171;font-weight:700;font-size:0.9rem;margin-top:0.4rem;">Security</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 p-5">
+                  <span class="blog-category cat-security mb-2 inline-block">SECURITY</span>
+                  <h2 class="blog-title mb-2">
+                    <a href="#" id="post-antivirus-link">How to Choose the Best Antivirus for Bangladesh Users (2024)</a>
+                  </h2>
+                  <p class="blog-excerpt mb-4 line-clamp-2">We tested 10 antivirus programs on Bangladeshi internet. Here's our definitive ranking of the best options for speed, protection, and value.</p>
+                  <div class="blog-meta flex items-center gap-2 flex-wrap">
+                    <span>Farhan Ahmed</span><span>·</span>
+                    <span>Sep 8, 2024</span><span>·</span><span>6 min read</span>
+                    <a href="#" class="ml-auto text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition" id="post-antivirus-read">Read →</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card" id="post-canva" data-tag="design">
+              <div class="grid grid-cols-1 sm:grid-cols-3">
+                <div class="overflow-hidden sm:rounded-l-[20px]">
+                  <div class="blog-cover flex items-center justify-center sm:h-full"
+                       style="background:linear-gradient(135deg,#1a0038,#2d004f,#4a0080);min-height:160px;">
+                    <div class="text-center">
+                      <div style="font-size:3rem;">🎨</div>
+                      <div style="color:#c084fc;font-weight:700;font-size:0.9rem;margin-top:0.4rem;">Design</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 p-5">
+                  <span class="blog-category cat-design mb-2 inline-block">DESIGN</span>
+                  <h2 class="blog-title mb-2">
+                    <a href="#" id="post-canva-link">Canva Pro vs Adobe Photoshop: Which Is Better for Bangladeshi Freelancers?</a>
+                  </h2>
+                  <p class="blog-excerpt mb-4 line-clamp-2">A detailed comparison of two powerhouse design tools. We look at price, features, ease of use, and which one gives you the best ROI as a Bangladeshi freelancer or small business owner.</p>
+                  <div class="blog-meta flex items-center gap-2 flex-wrap">
+                    <span>Sumaiya Islam</span><span>·</span>
+                    <span>Sep 5, 2024</span><span>·</span><span>7 min read</span>
+                    <a href="#" class="ml-auto text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition" id="post-canva-read">Read →</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card" id="post-office" data-tag="office">
+              <div class="grid grid-cols-1 sm:grid-cols-3">
+                <div class="overflow-hidden sm:rounded-l-[20px]">
+                  <div class="blog-cover flex items-center justify-center sm:h-full"
+                       style="background:linear-gradient(135deg,#001a38,#002f5e,#003f7a);min-height:160px;">
+                    <div class="text-center">
+                      <div style="font-size:3rem;">📊</div>
+                      <div style="color:#60a5fa;font-weight:700;font-size:0.9rem;margin-top:0.4rem;">Office</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 p-5">
+                  <span class="blog-category cat-office mb-2 inline-block">OFFICE</span>
+                  <h2 class="blog-title mb-2">
+                    <a href="#" id="post-office-link">Microsoft Office 365 vs Office 2021: Full Comparison for Bangladesh</a>
+                  </h2>
+                  <p class="blog-excerpt mb-4 line-clamp-2">Should you get the one-time purchase Office 2021 or the subscription-based Office 365? We break down costs, features, cloud storage, and which is smarter for students and businesses.</p>
+                  <div class="blog-meta flex items-center gap-2 flex-wrap">
+                    <span>Karim Hossain</span><span>·</span>
+                    <span>Sep 2, 2024</span><span>·</span><span>5 min read</span>
+                    <a href="#" class="ml-auto text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition" id="post-office-read">Read →</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card" id="post-tips" data-tag="tips">
+              <div class="grid grid-cols-1 sm:grid-cols-3">
+                <div class="overflow-hidden sm:rounded-l-[20px]">
+                  <div class="blog-cover flex items-center justify-center sm:h-full"
+                       style="background:linear-gradient(135deg,#001a00,#003300,#004d00);min-height:160px;">
+                    <div class="text-center">
+                      <div style="font-size:3rem;">💡</div>
+                      <div style="color:#4ade80;font-weight:700;font-size:0.9rem;margin-top:0.4rem;">Tips</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sm:col-span-2 p-5">
+                  <span class="blog-category cat-tips mb-2 inline-block">TIPS</span>
+                  <h2 class="blog-title mb-2">
+                    <a href="#" id="post-tips-link">10 Benefits of Upgrading to Windows 11 You Probably Didn't Know</a>
+                  </h2>
+                  <p class="blog-excerpt mb-4 line-clamp-2">Windows 11 isn't just a cosmetic upgrade. From Snap Layouts to Android app support and improved gaming performance, here are 10 hidden benefits that make upgrading worth every taka.</p>
+                  <div class="blog-meta flex items-center gap-2 flex-wrap">
+                    <span>Rahim Uddin</span><span>·</span>
+                    <span>Aug 28, 2024</span><span>·</span><span>9 min read</span>
+                    <a href="#" class="ml-auto text-indigo-400 text-sm font-semibold hover:text-indigo-300 transition" id="post-tips-read">Read →</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-center gap-2 pt-4" id="blog-pagination">
+              <button class="w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm" style="background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;" id="page-1">1</button>
+              <button class="w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm hover:bg-white/10 transition" style="color:#94a3b8;" id="page-2">2</button>
+              <button class="w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm hover:bg-white/10 transition" style="color:#94a3b8;" id="page-3">3</button>
+              <span class="text-gray-600">…</span>
+              <button class="w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm hover:bg-white/10 transition" style="color:#94a3b8;" id="page-next">›</button>
+            </div>
+
+          </div>
+
+          <!-- ── SIDEBAR (1/3) ── -->
+          <aside class="space-y-6">
+
+            <!-- Newsletter -->
+            <div class="newsletter-box" id="sidebar-newsletter">
+              <div class="text-2xl mb-3">📧</div>
+              <h3 class="text-white font-bold text-lg mb-2">Get Weekly Tips</h3>
+              <p class="text-gray-400 text-sm mb-4">Join 3,200+ subscribers for exclusive deals and tech tips delivered to your inbox.</p>
+              <input type="email" id="newsletter-email" placeholder="your@email.com" class="w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 outline-none text-sm mb-3" style="background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);" />
+              <button class="btn-primary w-full justify-center" id="newsletter-btn">Subscribe Free</button>
+              <p class="text-gray-600 text-xs mt-2 text-center">No spam, unsubscribe anytime.</p>
+            </div>
+
+            <!-- Popular Posts -->
+            <div class="glass-card p-5" id="sidebar-popular">
+              <h3 class="text-white font-bold text-base mb-4">🔥 Popular Posts</h3>
+              <div class="space-y-4">
+                <a href="#" class="flex gap-3 group" id="popular-1">
+                  <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl" style="background:rgba(79,70,229,0.15);">🪟</div>
+                  <div>
+                    <div class="text-sm font-semibold text-gray-200 group-hover:text-indigo-300 transition leading-snug">Windows 11 Pro vs Home: Which Should You Buy?</div>
+                    <div class="text-xs text-gray-500 mt-1">2.4k views · 8 min</div>
+                  </div>
+                </a>
+                <a href="#" class="flex gap-3 group" id="popular-2">
+                  <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl" style="background:rgba(239,68,68,0.1);">🛡️</div>
+                  <div>
+                    <div class="text-sm font-semibold text-gray-200 group-hover:text-indigo-300 transition leading-snug">Best Antivirus for Bangladesh Users 2024</div>
+                    <div class="text-xs text-gray-500 mt-1">1.8k views · 6 min</div>
+                  </div>
+                </a>
+                <a href="#" class="flex gap-3 group" id="popular-3">
+                  <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl" style="background:rgba(168,85,247,0.12);">🎨</div>
+                  <div>
+                    <div class="text-sm font-semibold text-gray-200 group-hover:text-indigo-300 transition leading-snug">Canva Pro vs Adobe for Freelancers</div>
+                    <div class="text-xs text-gray-500 mt-1">1.2k views · 7 min</div>
+                  </div>
+                </a>
+                <a href="#" class="flex gap-3 group" id="popular-4">
+                  <div class="w-14 h-14 rounded-xl flex-shrink-0 flex items-center justify-center text-2xl" style="background:rgba(245,158,11,0.1);">📊</div>
+                  <div>
+                    <div class="text-sm font-semibold text-gray-200 group-hover:text-indigo-300 transition leading-snug">Office 365 vs Office 2021 — Full Guide</div>
+                    <div class="text-xs text-gray-500 mt-1">980 views · 5 min</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="glass-card p-5" id="sidebar-categories">
+              <h3 class="text-white font-bold text-base mb-4">📂 Categories</h3>
+              <div class="space-y-2">
+                <a href="#" class="flex items-center justify-between py-2 border-b border-white/5 text-sm text-gray-400 hover:text-white transition" id="cat-link-windows">
+                  <span>🪟 Windows</span><span class="text-xs bg-indigo-900/40 px-2 py-0.5 rounded-full text-indigo-300">12</span>
+                </a>
+                <a href="#" class="flex items-center justify-between py-2 border-b border-white/5 text-sm text-gray-400 hover:text-white transition" id="cat-link-security">
+                  <span>🛡️ Security</span><span class="text-xs bg-red-900/40 px-2 py-0.5 rounded-full text-red-300">8</span>
+                </a>
+                <a href="#" class="flex items-center justify-between py-2 border-b border-white/5 text-sm text-gray-400 hover:text-white transition" id="cat-link-design">
+                  <span>🎨 Design Tools</span><span class="text-xs bg-purple-900/40 px-2 py-0.5 rounded-full text-purple-300">6</span>
+                </a>
+                <a href="#" class="flex items-center justify-between py-2 border-b border-white/5 text-sm text-gray-400 hover:text-white transition" id="cat-link-office">
+                  <span>📊 MS Office</span><span class="text-xs bg-yellow-900/40 px-2 py-0.5 rounded-full text-yellow-300">5</span>
+                </a>
+                <a href="#" class="flex items-center justify-between py-2 text-sm text-gray-400 hover:text-white transition" id="cat-link-tips">
+                  <span>💡 Tips & Tricks</span><span class="text-xs bg-green-900/40 px-2 py-0.5 rounded-full text-green-300">9</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Promo Card -->
+            <div class="glass-card p-5 text-center" style="background:linear-gradient(135deg,rgba(79,70,229,0.12),rgba(34,197,94,0.05));border-color:rgba(79,70,229,0.3);" id="sidebar-promo">
+              <div class="text-4xl mb-3">💻</div>
+              <h3 class="text-white font-bold mb-2">Need Windows 11?</h3>
+              <p class="text-gray-400 text-sm mb-4">Get a genuine lifetime license key at the best price in Bangladesh.</p>
+              <a href="product.html" class="btn-primary inline-flex text-sm py-2.5 px-5" id="promo-link">⚡ Buy Now — ৳ 599</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer pt-10 pb-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12">
+        <div class="md:col-span-2">
+          <div class="footer-logo mb-3">Bengali IT</div>
+          <p class="text-gray-400 text-sm max-w-xs leading-relaxed">Bangladesh's trusted source for 100% genuine digital products. Instant delivery, best prices, local payment support.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Products</h4>
+          <a href="product.html"    class="footer-link">Windows 11 Pro Key</a>
+          <a href="product.html"    class="footer-link">Microsoft Office 365</a>
+          <a href="product.html"    class="footer-link">Canva Pro</a>
+          <a href="product.html"    class="footer-link">Adobe Creative Cloud</a>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Company</h4>
+          <a href="domain-hosting.html" class="footer-link">Domain & Hosting</a>
+          <a href="blog.html"           class="footer-link">Blog</a>
+          <a href="account.html"        class="footer-link">My Account</a>
+          <a href="#"                   class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <img src="assets/images/payment-badge.png" alt="bKash Nagad Rocket" class="h-10 object-contain rounded-lg" />
+        <span class="text-gray-600 text-xs">© 2024 Bengali IT. All rights reserved. Made with ❤️ in Bangladesh.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tag filter
+    document.querySelectorAll('.tag-pill').forEach(pill => {
+      pill.addEventListener('click', function () {
+        document.querySelectorAll('.tag-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const tag = this.dataset.tag;
+        document.querySelectorAll('article[data-tag]').forEach(card => {
+          card.style.display = (tag === 'all' || card.dataset.tag === tag) ? '' : 'none';
+        });
+      });
+    });
+
+    // Newsletter
+    document.getElementById('newsletter-btn').addEventListener('click', function () {
+      const email = document.getElementById('newsletter-email').value.trim();
+      if (email) {
+        this.textContent = '✅ Subscribed!';
+        this.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+        document.getElementById('newsletter-email').value = '';
+      }
+    });
+  </script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/fomo.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+
+</body>
+</html>
