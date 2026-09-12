@@ -1,559 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bengali IT — Premium Digital Products & Software in Bangladesh</title>
-  <meta name="description" content="Buy 100% genuine Windows 11, Office 365, Canva Pro and more digital software keys at the best price in Bangladesh. Instant delivery, 24/7 support, bKash & Nagad accepted." />
-  <meta name="keywords" content="Bengali IT, digital products Bangladesh, Windows 11 key, Office 365 Bangladesh, Canva Pro Bangladesh, software license BD" />
-  <meta property="og:title" content="Bengali IT — Premium Digital Products in Bangladesh" />
-  <meta property="og:description" content="100% Genuine, Instant Delivery, 24/7 Support. Pay with bKash, Nagad, Rocket." />
-  <meta property="og:type" content="website" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#4f46e5',
-            secondary: '#7c3aed',
-            accent: '#22c55e',
-            dark: '#0f0e1a',
-            dark2: '#1a1830',
-          },
-          fontFamily: {
-            sans: ['Inter', 'Poppins', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-
-  <!-- Favicon (emoji fallback) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengali IT - Premium Digital Products</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#7c3aed',
+                        success: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .nav-link { transition: color 0.2s; }
+        .nav-link:hover { color: #a78bfa; }
+        
+        /* Dropdown CSS */
+        .group:hover .dropdown-menu { display: block; }
+    </style>
 </head>
-<body>
+<body class="antialiased font-sans">
 
-  <!-- ════════════════════════════════════════
-       NAVBAR
-  ════════════════════════════════════════ -->
-  <nav id="navbar" class="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-16">
-
-        <!-- Logo -->
-        <a href="index.html" class="flex items-center gap-3" aria-label="Bengali IT Home">
-          <img src="assets/images/logo.png" alt="Bengali IT Logo" class="h-9 w-auto rounded-lg" onerror="this.style.display='none'" />
-          <span class="nav-logo">Bengali IT</span>
-        </a>
-
-        <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-7">
-          <a href="index.html" class="nav-link" id="nav-home">Home</a>
-          <a href="#products" class="nav-link" id="nav-products">Products</a>
-          <a href="blog.html" class="nav-link" id="nav-blog">Blog</a>
-
-          <!-- Services Dropdown -->
-          <div class="dropdown">
-            <button class="nav-link flex items-center gap-1" id="nav-services" aria-haspopup="true" aria-expanded="false">
-              Services
-              <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="dropdown-menu">
-              <a href="domain-hosting.html" class="dropdown-item" id="nav-domain">
-                🌐 Domain & Hosting
-              </a>
-              <a href="#" class="dropdown-item" id="nav-seo">📈 SEO Services</a>
-              <a href="#" class="dropdown-item" id="nav-support">🛠️ Tech Support</a>
-              <a href="#" class="dropdown-item" id="nav-design">🎨 Graphic Design</a>
-            </div>
-          </div>
-
-          <a href="account.html" class="nav-link" id="nav-account">Account</a>
-        </div>
-
-        <!-- CTA + Hamburger -->
-        <div class="flex items-center gap-3">
-          <a href="#products" class="hidden sm:inline-flex btn-primary text-sm py-2.5 px-5" id="nav-cta">
-            🛒 Shop Now
-          </a>
-          <button id="menu-btn" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition" aria-label="Toggle mobile menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu md:hidden">
-      <a href="index.html" class="mobile-nav-link" id="mob-home">🏠 Home</a>
-      <a href="index.html#products" class="mobile-nav-link" id="mob-products">📦 Products</a>
-      <a href="domain-hosting.html" class="mobile-nav-link" id="mob-domain">🌐 Domain & Hosting</a>
-      <a href="blog.html" class="mobile-nav-link" id="mob-blog">📝 Blog</a>
-      <a href="account.html" class="mobile-nav-link" id="mob-account">👤 Account</a>
-    </div>
-  </nav>
-
-  <main>
-
-    <!-- ════════════════════════════════════════
-         HERO SECTION
-    ════════════════════════════════════════ -->
-    <section id="hero" class="hero">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full hero-content">
-        <div class="max-w-2xl">
-
-          <!-- Badge -->
-          <div class="hero-badge">
-            <span>⭐</span>
-            Bangladesh's #1 Digital Software Store
-          </div>
-
-          <!-- Headline -->
-          <h1 class="hero-title mb-5">
-            Premium Digital Products &
-            <span class="gradient-text"> Software at the Best Price</span>
-            in Bangladesh.
-          </h1>
-
-          <!-- Sub-headline -->
-          <p class="hero-sub mb-8">
-            100% Genuine, Instant Delivery, and 24/7 Premium Support.
-            Pay with bKash, Nagad, or Rocket — no hassle, no delay.
-          </p>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap gap-4 mb-8">
-            <a href="#products" class="btn-primary" id="hero-cta-explore">
-              🚀 Explore Products
-            </a>
-            <a href="domain-hosting.html" class="btn-secondary" id="hero-cta-hosting">
-              🌐 Domain & Hosting
-            </a>
-          </div>
-
-          <!-- Flash Delivery Countdown -->
-          <div class="countdown-banner" id="flash-delivery-timer">
-            <span>⚡ Flash Delivery — Get your product within:</span>
-            <div class="countdown-timer" aria-label="Countdown timer">
-              <span class="timer-unit" id="timer-h">00</span>
-              <span style="color:#4ade80;font-weight:800;">:</span>
-              <span class="timer-unit" id="timer-m">10</span>
-              <span style="color:#4ade80;font-weight:800;">:</span>
-              <span class="timer-unit" id="timer-s">00</span>
-            </div>
-            <span>of ordering</span>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════
-         STATS / COUNTER SECTION
-    ════════════════════════════════════════ -->
-    <section class="stats-section section-pad">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/10">
-
-          <div class="stat-card bg-dark2">
-            <div class="stat-number" data-counter="5247" data-suffix="+">0+</div>
-            <div class="stat-label">😊 Happy Customers</div>
-          </div>
-
-          <div class="stat-card bg-dark2">
-            <div class="stat-number" data-counter="100" data-suffix="%">0%</div>
-            <div class="stat-label">✅ Genuine Products</div>
-          </div>
-
-          <div class="stat-card bg-dark2">
-            <div class="stat-number" data-counter="98" data-suffix="%">0%</div>
-            <div class="stat-label">⚡ Instant Delivery</div>
-          </div>
-
-          <div class="stat-card bg-dark2">
-            <div class="stat-number" data-counter="24" data-suffix="/7">0</div>
-            <div class="stat-label">🛡️ Premium Support</div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════
-         FEATURED PRODUCTS
-    ════════════════════════════════════════ -->
-    <section id="products" class="section-pad">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-          <div class="section-tag">🔥 Hot Deals</div>
-          <h2 class="section-title">Our Best-Selling <span style="background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Digital Products</span></h2>
-          <p class="text-gray-400 mt-3 max-w-xl mx-auto">100% original license keys — activate on Microsoft, Adobe, or Canva directly. Delivered in under 10 minutes.</p>
-        </div>
-
-        <!-- Products Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          <!-- Product 1: Windows 11 Pro -->
-          <article class="product-card fade-in-up" id="card-win11">
-            <div class="overflow-hidden">
-              <a href="product.html">
-                <img src="assets/images/products/windows11.jpg"
-                     alt="Windows 11 Pro Key — Lifetime License"
-                     class="product-card-image"
-                     loading="lazy" />
-              </a>
-            </div>
-            <div class="product-card-body">
-              <div class="product-badge badge-bestseller">🏆 BESTSELLER</div>
-              <h3 class="product-title">
-                <a href="product.html" class="hover:text-indigo-300 transition">Windows 11 Pro Key</a>
-              </h3>
-              <p class="product-meta">Lifetime License · 1 PC · Genuine</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="product-price">৳ 499</span>
-                <span class="product-price-old">৳ 1,200</span>
-              </div>
-              <div class="flex items-center gap-1 mt-1">
-                <span class="text-yellow-400 text-sm">★★★★★</span>
-                <span class="text-xs text-gray-500">(312)</span>
-              </div>
-              <a href="product.html" class="btn-add-cart mt-3 block text-center" id="btn-win11">⚡ Buy Now — ৳ 499</a>
-            </div>
-          </article>
-
-          <!-- Product 2: Office 365 -->
-          <article class="product-card fade-in-up" id="card-office365">
-            <div class="overflow-hidden">
-              <a href="product.html">
-                <img src="assets/images/products/office365.jpg"
-                     alt="Microsoft Office 365 — 1 Year Subscription"
-                     class="product-card-image"
-                     loading="lazy" />
-              </a>
-            </div>
-            <div class="product-card-body">
-              <div class="product-badge badge-hot">🔥 HOT</div>
-              <h3 class="product-title">
-                <a href="product.html" class="hover:text-indigo-300 transition">Microsoft Office 365</a>
-              </h3>
-              <p class="product-meta">1 Year · Full Suite · Word, Excel, PPT</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="product-price">৳ 699</span>
-                <span class="product-price-old">৳ 1,500</span>
-              </div>
-              <div class="flex items-center gap-1 mt-1">
-                <span class="text-yellow-400 text-sm">★★★★★</span>
-                <span class="text-xs text-gray-500">(189)</span>
-              </div>
-              <button class="btn-add-cart" id="btn-office365">⚡ Buy Now — ৳ 699</button>
-            </div>
-          </article>
-
-          <!-- Product 3: Canva Pro -->
-          <article class="product-card fade-in-up" id="card-canva">
-            <div class="overflow-hidden">
-              <a href="product.html">
-                <img src="assets/images/products/canva-pro.jpg"
-                     alt="Canva Pro — 1 Year Subscription"
-                     class="product-card-image"
-                     loading="lazy" />
-              </a>
-            </div>
-            <div class="product-card-body">
-              <div class="product-badge badge-new">✨ POPULAR</div>
-              <h3 class="product-title">
-                <a href="product.html" class="hover:text-indigo-300 transition">Canva Pro (1 Year)</a>
-              </h3>
-              <p class="product-meta">12 Months · Brand Kit · 100M+ Assets</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="product-price">৳ 349</span>
-                <span class="product-price-old">৳ 800</span>
-              </div>
-              <div class="flex items-center gap-1 mt-1">
-                <span class="text-yellow-400 text-sm">★★★★☆</span>
-                <span class="text-xs text-gray-500">(247)</span>
-              </div>
-              <button class="btn-add-cart" id="btn-canva">⚡ Buy Now — ৳ 349</button>
-            </div>
-          </article>
-
-          <!-- Product 4: Adobe CC (placeholder image with gradient) -->
-          <article class="product-card fade-in-up" id="card-adobe">
-            <div class="overflow-hidden">
-              <a href="product.html">
-                <div class="product-card-image flex items-center justify-center"
-                     style="background:linear-gradient(135deg,#1a0000,#4a0000,#8b0000);height:200px;">
-                  <div class="text-center">
-                    <div style="font-size:3rem;">🎨</div>
-                    <div style="color:#fff;font-weight:800;font-size:1.1rem;margin-top:0.5rem;">Adobe CC</div>
-                    <div style="color:#fca5a5;font-size:0.8rem;">All Apps · 1 Year</div>
-                  </div>
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-40 bg-secondary/95 backdrop-blur border-b border-slate-700 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2">
+                    <i class="fa-solid fa-laptop-code text-accent text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight">Bengali <span class="text-accent">IT</span></span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="nav-link text-white font-medium">Home</a>
+                    <a href="index.html#products" class="nav-link text-slate-300 font-medium">Products</a>
+                    <a href="#" class="nav-link text-slate-300 font-medium">Blog</a>
+                    
+                    <!-- Dropdown -->
+                    <div class="relative group">
+                        <button class="nav-link text-slate-300 font-medium flex items-center gap-1">
+                            Services <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        <div class="dropdown-menu hidden absolute top-full left-0 mt-2 w-48 bg-secondary border border-slate-700 rounded-lg shadow-xl py-2">
+                            <a href="domain-hosting.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white">Domain Hosting</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white">Web Development</a>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Account Button -->
+                <div class="flex items-center">
+                    <a href="account.html" class="bg-accent hover:bg-violet-700 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-lg shadow-violet-900/20">
+                        <i class="fa-regular fa-user mr-2"></i>Account
+                    </a>
                 </div>
-              </a>
             </div>
-            <div class="product-card-body">
-              <div class="product-badge badge-hot">💎 PREMIUM</div>
-              <h3 class="product-title">
-                <a href="product.html" class="hover:text-indigo-300 transition">Adobe Creative Cloud</a>
-              </h3>
-              <p class="product-meta">All Apps · 1 Year · Photoshop, Illustrator</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="product-price">৳ 1,299</span>
-                <span class="product-price-old">৳ 3,000</span>
-              </div>
-              <div class="flex items-center gap-1 mt-1">
-                <span class="text-yellow-400 text-sm">★★★★★</span>
-                <span class="text-xs text-gray-500">(95)</span>
-              </div>
-              <button class="btn-add-cart" id="btn-adobe">⚡ Buy Now — ৳ 1,299</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-32">
+        <!-- Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/20 text-success text-sm font-medium mb-8">
+                <i class="fa-solid fa-server"></i> 99.9% Uptime Guaranteed
             </div>
-          </article>
-
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Premium Digital Products at the <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-violet-400">Best Price in Bangladesh</span>
+            </h1>
+            
+            <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                100% Genuine license keys, instantly delivered. Elevate your digital workflow securely and affordably.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#products" class="bg-accent hover:bg-violet-700 text-white px-8 py-3.5 rounded-xl font-semibold text-lg transition-all transform hover:-translate-y-1 shadow-lg shadow-violet-900/30">
+                    Explore Products
+                </a>
+                <a href="domain-hosting.html" class="bg-secondary hover:bg-slate-700 border border-slate-600 text-white px-8 py-3.5 rounded-xl font-semibold text-lg transition-all">
+                    View Hosting Plans
+                </a>
+            </div>
         </div>
-
-        <!-- View All -->
-        <div class="text-center mt-10">
-          <a href="#" class="btn-secondary inline-flex" id="btn-view-all">
-            View All Products
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-
-      </div>
     </section>
 
-    <!-- ════════════════════════════════════════
-         WHY CHOOSE US
-    ════════════════════════════════════════ -->
-    <section class="section-pad" style="background:linear-gradient(180deg,var(--dark2) 0%,var(--dark) 100%);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-        <div class="text-center mb-12">
-          <div class="section-tag">🛡️ Our Promise</div>
-          <h2 class="section-title">Why <span style="background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">5,000+ Bangladeshis</span> Trust Us</h2>
+    <!-- Trust Section (Counters) -->
+    <section class="border-y border-slate-800 bg-secondary/30 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2"><span id="count1">0</span>+</div>
+                    <div class="text-slate-400 font-medium">Happy Customers</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2"><span id="count2">0</span>%</div>
+                    <div class="text-slate-400 font-medium">Genuine Products</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">10m</div>
+                    <div class="text-slate-400 font-medium">Average Delivery</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold text-white mb-2">24/7</div>
+                    <div class="text-slate-400 font-medium">Premium Support</div>
+                </div>
+            </div>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <div class="feature-card fade-in-up" id="feature-genuine">
-            <div class="feature-icon" style="background:rgba(79,70,229,0.15);">✅</div>
-            <h3 class="text-white font-bold text-lg mb-2">100% Genuine Products</h3>
-            <p class="text-gray-400 text-sm">All keys are sourced from official channels. Full activation guaranteed or your money back.</p>
-          </div>
-
-          <div class="feature-card fade-in-up" id="feature-delivery">
-            <div class="feature-icon" style="background:rgba(34,197,94,0.12);">⚡</div>
-            <h3 class="text-white font-bold text-lg mb-2">Instant Delivery</h3>
-            <p class="text-gray-400 text-sm">Get your license key within 10 minutes of payment — delivered directly to your email.</p>
-          </div>
-
-          <div class="feature-card fade-in-up" id="feature-support">
-            <div class="feature-icon" style="background:rgba(245,158,11,0.12);">🛠️</div>
-            <h3 class="text-white font-bold text-lg mb-2">24/7 Premium Support</h3>
-            <p class="text-gray-400 text-sm">Our dedicated team is always online to help you with activation and any issues.</p>
-          </div>
-
-          <div class="feature-card fade-in-up" id="feature-payment">
-            <div class="feature-icon" style="background:rgba(236,72,153,0.12);">💳</div>
-            <h3 class="text-white font-bold text-lg mb-2">Local Payment Methods</h3>
-            <p class="text-gray-400 text-sm">Pay easily with bKash, Nagad, or Rocket. No credit card or foreign currency needed.</p>
-          </div>
-
-          <div class="feature-card fade-in-up" id="feature-price">
-            <div class="feature-icon" style="background:rgba(34,197,94,0.12);">💰</div>
-            <h3 class="text-white font-bold text-lg mb-2">Best Price in BD</h3>
-            <p class="text-gray-400 text-sm">We offer the most competitive prices on genuine software — saving you up to 70% off retail.</p>
-          </div>
-
-          <div class="feature-card fade-in-up" id="feature-trusted">
-            <div class="feature-icon" style="background:rgba(79,70,229,0.15);">🏆</div>
-            <h3 class="text-white font-bold text-lg mb-2">Trusted by Thousands</h3>
-            <p class="text-gray-400 text-sm">5,000+ happy customers across Bangladesh — from students to large enterprises.</p>
-          </div>
-
-        </div>
-      </div>
     </section>
 
-    <!-- ════════════════════════════════════════
-         PAYMENT SECTION
-    ════════════════════════════════════════ -->
-    <section class="section-pad">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="payment-section text-center">
-          <div class="section-tag mx-auto mb-4">🔒 Secure Payments</div>
-          <h2 class="section-title mb-4">Pay with Your Favourite Local Method</h2>
-          <p class="text-gray-400 mb-8 max-w-lg mx-auto">We accept all major Bangladeshi mobile banking services. Your transaction is 100% safe and encrypted.</p>
-          <div class="flex justify-center">
-            <img src="assets/images/payment-badge.png"
-                 alt="Accepted payment methods: bKash, Nagad, Rocket — 100% Secure Local Payment"
-                 class="payment-badge-img max-w-sm w-full" />
-          </div>
-          <div class="flex flex-wrap justify-center gap-6 mt-8">
-            <div class="flex items-center gap-2 text-sm text-gray-400">
-              <span class="text-green-400">🔒</span> SSL Encrypted
+    <!-- Products Grid -->
+    <section id="products" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Digital Products</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Get your hands on the best software licenses with instant delivery and secure local payments.</p>
             </div>
-            <div class="flex items-center gap-2 text-sm text-gray-400">
-              <span class="text-green-400">✅</span> No Hidden Charges
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Product 1 -->
+                <div class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-colors group">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center relative">
+                        <i class="fa-brands fa-windows text-6xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">HOT</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-accent font-semibold mb-2 tracking-wide uppercase">Operating System</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Windows 11 Pro Key</h3>
+                        <p class="text-slate-400 text-sm mb-4">Lifetime license for 1 PC. 100% retail key, guaranteed activation.</p>
+                        
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <span class="text-2xl font-bold text-white">৳ 599</span>
+                                <span class="text-sm text-slate-500 line-through ml-2">৳ 1200</span>
+                            </div>
+                        </div>
+                        
+                        <a href="product.html" class="block w-full bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent text-center px-4 py-2.5 rounded-lg font-medium transition-colors">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-colors group">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center relative">
+                        <i class="fa-solid fa-paintbrush text-6xl text-purple-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-accent font-semibold mb-2 tracking-wide uppercase">Design Tool</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Canva Pro (1 Year)</h3>
+                        <p class="text-slate-400 text-sm mb-4">Unlock all premium features, templates, and assets for 12 months.</p>
+                        
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <span class="text-2xl font-bold text-white">৳ 350</span>
+                                <span class="text-sm text-slate-500 line-through ml-2">৳ 800</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="block w-full bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent text-center px-4 py-2.5 rounded-lg font-medium transition-colors">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-secondary rounded-2xl overflow-hidden border border-slate-700 hover:border-accent transition-colors group">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center relative">
+                        <i class="fa-solid fa-shield-virus text-6xl text-success group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-xs text-accent font-semibold mb-2 tracking-wide uppercase">Security</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Kaspersky Antivirus</h3>
+                        <p class="text-slate-400 text-sm mb-4">1-Year premium protection for 1 PC. Stay safe from malware.</p>
+                        
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <span class="text-2xl font-bold text-white">৳ 450</span>
+                                <span class="text-sm text-slate-500 line-through ml-2">৳ 900</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="block w-full bg-accent/10 hover:bg-accent text-accent hover:text-white border border-accent text-center px-4 py-2.5 rounded-lg font-medium transition-colors">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+
             </div>
-            <div class="flex items-center gap-2 text-sm text-gray-400">
-              <span class="text-green-400">♻️</span> Refund Guarantee
-            </div>
-            <div class="flex items-center gap-2 text-sm text-gray-400">
-              <span class="text-green-400">⚡</span> Instant Processing
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- ════════════════════════════════════════
-         TESTIMONIALS
-    ════════════════════════════════════════ -->
-    <section class="section-pad" style="background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-        <div class="text-center mb-12">
-          <div class="section-tag">💬 Reviews</div>
-          <h2 class="section-title">What Our <span style="background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Customers Say</span></h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <div class="review-card fade-in-up" id="review-1">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Got my Windows 11 Pro key within 5 minutes of paying via bKash! 100% genuine, works perfectly. Will buy again!"</p>
-            <div class="flex items-center gap-3 mt-4">
-              <div class="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-sm font-bold text-white">R</div>
-              <div>
-                <div class="review-author">Rakibul Islam</div>
-                <div class="text-xs text-gray-500">Dhaka · Windows 11 Pro</div>
-              </div>
+    <!-- Footer -->
+    <footer class="bg-secondary border-t border-slate-800 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <a href="index.html" class="flex items-center gap-2 justify-center md:justify-start mb-2">
+                    <i class="fa-solid fa-laptop-code text-accent text-xl"></i>
+                    <span class="font-bold text-lg">Bengali <span class="text-accent">IT</span></span>
+                </a>
+                <p class="text-slate-500 text-sm">© 2024 Bengali IT. All rights reserved.</p>
             </div>
-          </div>
-
-          <div class="review-card fade-in-up" id="review-2">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Canva Pro at such a cheap price! Support helped me activate it within minutes. Bengali IT is the best!"</p>
-            <div class="flex items-center gap-3 mt-4">
-              <div class="w-9 h-9 rounded-full bg-purple-600 flex items-center justify-center text-sm font-bold text-white">S</div>
-              <div>
-                <div class="review-author">Sumaiya Tasnim</div>
-                <div class="text-xs text-gray-500">Chittagong · Canva Pro</div>
-              </div>
+            
+            <div class="flex gap-4 items-center">
+                <span class="text-slate-400 text-sm">100% Secure Local Payment:</span>
+                <span class="bg-slate-800 px-3 py-1 rounded text-pink-500 font-bold text-xs border border-slate-700">bKash</span>
+                <span class="bg-slate-800 px-3 py-1 rounded text-orange-500 font-bold text-xs border border-slate-700">Nagad</span>
+                <span class="bg-slate-800 px-3 py-1 rounded text-purple-400 font-bold text-xs border border-slate-700">Rocket</span>
             </div>
-          </div>
+        </div>
+    </footer>
 
-          <div class="review-card fade-in-up" id="review-3">
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">"Bought Office 365 for my whole team. Excellent price, fast delivery, and the support team was very helpful!"</p>
-            <div class="flex items-center gap-3 mt-4">
-              <div class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center text-sm font-bold text-white">F</div>
-              <div>
-                <div class="review-author">Fahim Khandaker</div>
-                <div class="text-xs text-gray-500">Sylhet · Office 365</div>
-              </div>
+    <!-- Global Automations JS -->
+    <script>
+        // Counter Animation
+        function animateValue(id, start, end, duration) {
+            if (start === end) return;
+            var range = end - start;
+            var current = start;
+            var increment = end > start? 1 : -1;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            var obj = document.getElementById(id);
+            var timer = setInterval(function() {
+                current += increment;
+                obj.innerHTML = current.toLocaleString();
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+        
+        // Start counter when loaded
+        setTimeout(() => {
+            animateValue("count1", 4500, 5000, 1500);
+            animateValue("count2", 0, 100, 1500);
+        }, 500);
+
+        // Chatbot Auto-open
+        setTimeout(() => {
+            const chatbot = document.createElement('div');
+            chatbot.className = 'fixed bottom-6 right-6 z-50';
+            chatbot.innerHTML = `
+                <div id="chat-window" class="hidden mb-4 bg-secondary border border-slate-700 rounded-xl w-72 shadow-2xl shadow-black overflow-hidden">
+                    <div class="bg-accent p-3 text-white font-bold flex justify-between items-center">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-robot"></i> Bengali IT Support</span>
+                        <button onclick="document.getElementById('chat-window').classList.add('hidden')" class="text-white hover:text-gray-200"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="p-4 text-sm text-slate-300 bg-primary">
+                        <div class="bg-secondary p-3 rounded-lg rounded-tl-none border border-slate-700 inline-block mb-2">
+                            👋 Welcome to Bengali IT! Looking for best deals?
+                        </div>
+                    </div>
+                    <div class="p-3 bg-secondary border-t border-slate-700 flex gap-2">
+                        <input type="text" placeholder="Type a message..." class="flex-1 bg-primary border border-slate-600 rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-accent">
+                        <button class="bg-accent text-white px-3 py-1.5 rounded hover:bg-violet-700 transition-colors"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('chat-window').classList.toggle('hidden')" class="bg-accent hover:bg-violet-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-2xl ml-auto transition-transform hover:scale-110">
+                    <i class="fas fa-comment-dots"></i>
+                </button>
+            `;
+            document.body.appendChild(chatbot);
+            // Open it automatically
+            document.getElementById('chat-window').classList.remove('hidden');
+        }, 7000);
+
+        // FOMO Popup
+        const fomoMessages = [
+            "Faheem from Dhaka just purchased <strong>Windows 11 Pro</strong>",
+            "Sadia from Sylhet just purchased <strong>Canva Pro</strong>",
+            "Karim from Chittagong just purchased <strong>Kaspersky Antivirus</strong>",
+            "Nusrat from Rajshahi just purchased <strong>Office 365</strong>"
+        ];
+        let fomoIndex = 0;
+        
+        const fomoWidget = document.createElement('div');
+        fomoWidget.className = 'fixed bottom-6 left-6 z-50 bg-secondary border border-slate-700 rounded-lg p-3 shadow-xl transition-all duration-500 opacity-0 transform translate-y-4 flex items-center gap-3 max-w-sm pointer-events-none';
+        fomoWidget.innerHTML = `
+            <div class="bg-success/20 text-success w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-check"></i>
             </div>
-          </div>
+            <div>
+                <p id="fomo-text" class="text-slate-200 text-sm font-medium"></p>
+                <p class="text-slate-500 text-xs mt-1"><i class="fa-solid fa-shield-halved text-success"></i> Verified Purchase • Just now</p>
+            </div>
+        `;
+        document.body.appendChild(fomoWidget);
 
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════ -->
-  <footer class="footer pt-16 pb-0">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12">
-
-        <!-- Brand -->
-        <div class="md:col-span-2">
-          <div class="footer-logo mb-3">Bengali IT</div>
-          <p class="text-gray-400 text-sm max-w-xs leading-relaxed">
-            Bangladesh's trusted source for 100% genuine digital products and software licenses.
-            Instant delivery, best prices, local payment support.
-          </p>
-          <div class="flex gap-3 mt-4">
-            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-indigo-600/30 transition" aria-label="Facebook">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-sky-500/30 transition" aria-label="Telegram">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="m22 3-8.942 18.167L9 12l-7-3.333L22 3z"/></svg>
-            </a>
-            <a href="#" class="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600/30 transition" aria-label="WhatsApp">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Products -->
-        <div>
-          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Products</h4>
-          <a href="product.html" class="footer-link">Windows 11 Pro Key</a>
-          <a href="product.html" class="footer-link">Microsoft Office 365</a>
-          <a href="product.html" class="footer-link">Canva Pro</a>
-          <a href="product.html" class="footer-link">Adobe Creative Cloud</a>
-          <a href="#" class="footer-link">Antivirus Software</a>
-        </div>
-
-        <!-- Company -->
-        <div>
-          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Company</h4>
-          <a href="domain-hosting.html" class="footer-link">Domain & Hosting</a>
-          <a href="#" class="footer-link">About Us</a>
-          <a href="#" class="footer-link">Contact</a>
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Refund Policy</a>
-        </div>
-
-      </div>
-
-      <!-- Payment Badges Footer -->
-      <div class="border-t border-white/10 py-6">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <img src="assets/images/payment-badge.png"
-               alt="bKash Nagad Rocket — Secure Payment"
-               class="h-12 object-contain rounded-lg" />
-          <div class="flex flex-wrap justify-center gap-4 text-xs text-gray-500">
-            <span class="flex items-center gap-1"><span class="text-green-400">🔒</span> SSL Secured</span>
-            <span class="flex items-center gap-1"><span class="text-green-400">✅</span> Genuine Products</span>
-            <span class="flex items-center gap-1"><span class="text-yellow-400">⚡</span> Instant Delivery</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        © 2024 Bengali IT. All rights reserved. Made with ❤️ in Bangladesh.
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- ════════════════════════════════════════
-       SCRIPTS
-  ════════════════════════════════════════ -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/fomo.js"></script>
-  <script src="assets/js/chatbot.js"></script>
-
+        setInterval(() => {
+            document.getElementById('fomo-text').innerHTML = fomoMessages[fomoIndex];
+            fomoIndex = (fomoIndex + 1) % fomoMessages.length;
+            
+            // Show
+            fomoWidget.classList.remove('opacity-0', 'translate-y-4');
+            fomoWidget.classList.add('opacity-100', 'translate-y-0');
+            
+            // Hide after 4 seconds
+            setTimeout(() => {
+                fomoWidget.classList.remove('opacity-100', 'translate-y-0');
+                fomoWidget.classList.add('opacity-0', 'translate-y-4');
+            }, 4000);
+        }, 10000);
+    </script>
 </body>
 </html>
