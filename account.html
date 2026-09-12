@@ -1,286 +1,583 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account - Bengali IT</title>
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
-                        accent: '#7c3aed',
-                        success: '#10b981',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body { background-color: #0f172a; color: #f8fafc; }
-        .nav-link { transition: color 0.2s; }
-        .nav-link:hover { color: #a78bfa; }
-        .group:hover .dropdown-menu { display: block; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — Bengali IT | Login & Register</title>
+  <meta name="description" content="Login or create your Bengali IT account to view your orders, download digital keys, and manage your subscriptions." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4f46e5',
+            secondary: '#7c3aed',
+            accent: '#22c55e',
+            dark: '#0f0e1a',
+            dark2: '#1a1830',
+          },
+          fontFamily: { sans: ['Inter', 'Poppins', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" />
+
+  <style>
+    .auth-card {
+      background: var(--dark2);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(79,70,229,0.08);
+    }
+    .auth-tab {
+      flex: 1;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.25s;
+    }
+    .auth-tab.active {
+      color: #fff;
+      border-bottom-color: var(--primary);
+      background: rgba(79,70,229,0.06);
+    }
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 0.5rem;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      outline: none;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      border-color: rgba(79,70,229,0.6);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+    .form-input::placeholder { color: #475569; }
+    .input-icon-wrap { position: relative; }
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #475569;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    .input-icon-wrap .form-input { padding-left: 2.75rem; }
+    .social-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.03);
+      color: #e2e8f0;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); transform: translateY(-1px); }
+    .divider {
+      position: relative;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: calc(50% - 2rem);
+      height: 1px;
+      background: var(--glass-border);
+    }
+    .divider::before { left: 0; }
+    .divider::after { right: 0; }
+    .divider span { font-size: 0.78rem; color: #475569; background: var(--dark2); padding: 0 0.75rem; }
+    .strength-bar { height: 4px; border-radius: 2px; flex: 1; background: rgba(255,255,255,0.08); transition: background 0.3s; }
+    .checkbox-custom { width:18px; height:18px; border-radius:5px; border:2px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.03); cursor:pointer; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+    .checkbox-custom.checked { background:var(--primary); border-color:var(--primary); }
+    .benefit-item { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 0; border-bottom:1px solid var(--glass-border); }
+    .benefit-item:last-child { border-bottom: none; }
+  </style>
 </head>
-<body class="antialiased font-sans">
+<body>
 
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-40 bg-secondary/95 backdrop-blur border-b border-slate-700 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-2">
-                    <i class="fa-solid fa-laptop-code text-accent text-2xl"></i>
-                    <span class="font-bold text-xl tracking-tight">Bengali <span class="text-accent">IT</span></span>
-                </a>
-                
-                <!-- Desktop Nav -->
-                <nav class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="nav-link text-slate-300 font-medium">Home</a>
-                    <a href="index.html#products" class="nav-link text-slate-300 font-medium">Products</a>
-                    <a href="#" class="nav-link text-slate-300 font-medium">Blog</a>
-                    
-                    <!-- Dropdown -->
-                    <div class="relative group">
-                        <button class="nav-link text-slate-300 font-medium flex items-center gap-1">
-                            Services <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </button>
-                        <div class="dropdown-menu hidden absolute top-full left-0 mt-2 w-48 bg-secondary border border-slate-700 rounded-lg shadow-xl py-2">
-                            <a href="domain-hosting.html" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white">Domain Hosting</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white">Web Development</a>
-                        </div>
-                    </div>
-                </nav>
-                
-                <!-- Account Button -->
-                <div class="flex items-center">
-                    <a href="account.html" class="bg-accent hover:bg-violet-700 text-white px-5 py-2 rounded-lg font-medium transition-colors shadow-lg shadow-violet-900/20">
-                        <i class="fa-regular fa-user mr-2"></i>Dashboard
-                    </a>
-                </div>
+  <!-- ════ NAVBAR ════ -->
+  <nav id="navbar" class="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3" aria-label="Bengali IT Home">
+          <img src="assets/images/logo.png" alt="Bengali IT Logo" class="h-9 w-auto rounded-lg" onerror="this.style.display='none'" />
+          <span class="nav-logo">Bengali IT</span>
+        </a>
+        <div class="hidden md:flex items-center gap-7">
+          <a href="index.html"          class="nav-link" id="nav-home">Home</a>
+          <a href="index.html#products" class="nav-link" id="nav-products">Products</a>
+          <a href="blog.html"           class="nav-link" id="nav-blog">Blog</a>
+          <div class="dropdown">
+            <button class="nav-link flex items-center gap-1" id="nav-services">
+              Services
+              <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="domain-hosting.html" class="dropdown-item" id="nav-domain">🌐 Domain & Hosting</a>
+              <a href="#"                   class="dropdown-item" id="nav-seo">📈 SEO Services</a>
+              <a href="#"                   class="dropdown-item" id="nav-support">🛠️ Tech Support</a>
+              <a href="#"                   class="dropdown-item" id="nav-graphic">🎨 Graphic Design</a>
             </div>
+          </div>
+          <a href="account.html" class="nav-link" id="nav-account" style="color:#fff;">Account</a>
         </div>
-    </header>
-
-    <!-- Account Dashboard -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex flex-col md:flex-row gap-8">
-            
-            <!-- Sidebar -->
-            <aside class="w-full md:w-64 flex-shrink-0">
-                <div class="bg-secondary rounded-xl border border-slate-700 overflow-hidden sticky top-24">
-                    <div class="p-6 border-b border-slate-700 text-center">
-                        <div class="w-20 h-20 bg-primary border-2 border-accent rounded-full mx-auto flex items-center justify-center mb-3">
-                            <i class="fa-solid fa-user text-3xl text-slate-400"></i>
-                        </div>
-                        <h3 class="font-bold text-lg text-white">Faheem Ahmed</h3>
-                        <p class="text-sm text-slate-400">faheem.ahmed@example.com</p>
-                    </div>
-                    <nav class="p-2 space-y-1">
-                        <a href="#" class="block px-4 py-2.5 rounded-lg bg-accent text-white font-medium">
-                            <i class="fa-solid fa-box mr-3 w-5"></i> My Orders
-                        </a>
-                        <a href="#" class="block px-4 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition-colors">
-                            <i class="fa-solid fa-download mr-3 w-5"></i> Downloads
-                        </a>
-                        <a href="#" class="block px-4 py-2.5 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white font-medium transition-colors">
-                            <i class="fa-solid fa-gear mr-3 w-5"></i> Settings
-                        </a>
-                        <div class="my-2 border-t border-slate-700"></div>
-                        <a href="#" class="block px-4 py-2.5 rounded-lg text-red-400 hover:bg-slate-800 font-medium transition-colors">
-                            <i class="fa-solid fa-sign-out-alt mr-3 w-5"></i> Logout
-                        </a>
-                    </nav>
-                </div>
-            </aside>
-            
-            <!-- Main Content -->
-            <main class="flex-1">
-                <h1 class="text-3xl font-bold text-white mb-6">My Orders & Keys</h1>
-                
-                <div class="bg-secondary rounded-xl border border-slate-700 overflow-hidden shadow-xl">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-slate-800 border-b border-slate-700 text-slate-300 text-sm uppercase tracking-wide">
-                                    <th class="p-4 font-semibold">Order ID</th>
-                                    <th class="p-4 font-semibold">Product</th>
-                                    <th class="p-4 font-semibold">Date</th>
-                                    <th class="p-4 font-semibold">Status</th>
-                                    <th class="p-4 font-semibold">License Key</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-sm">
-                                <!-- Row 1 -->
-                                <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
-                                    <td class="p-4 text-slate-400">#ORD-5839</td>
-                                    <td class="p-4 font-medium text-white">Windows 11 Pro Key</td>
-                                    <td class="p-4 text-slate-400">Sep 12, 2026</td>
-                                    <td class="p-4">
-                                        <span class="bg-success/20 text-success px-2 py-1 rounded text-xs font-bold">DELIVERED</span>
-                                    </td>
-                                    <td class="p-4">
-                                        <div class="flex items-center gap-2">
-                                            <input type="password" value="W269N-WFGWX-YVC9B-4J6C9-T83GX" readonly class="bg-primary border border-slate-600 rounded px-3 py-1.5 text-white w-48 outline-none font-mono text-xs" id="key-1">
-                                            <button onclick="toggleKey('key-1')" class="text-slate-400 hover:text-accent p-1 transition-colors" title="Reveal Key">
-                                                <i class="fa-solid fa-eye" id="icon-key-1"></i>
-                                            </button>
-                                            <button onclick="copyKey('key-1')" class="text-slate-400 hover:text-accent p-1 transition-colors" title="Copy Key">
-                                                <i class="fa-solid fa-copy"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 2 -->
-                                <tr class="border-b border-slate-700 hover:bg-slate-800/50 transition-colors">
-                                    <td class="p-4 text-slate-400">#ORD-4122</td>
-                                    <td class="p-4 font-medium text-white">Canva Pro (1 Year)</td>
-                                    <td class="p-4 text-slate-400">Aug 05, 2026</td>
-                                    <td class="p-4">
-                                        <span class="bg-success/20 text-success px-2 py-1 rounded text-xs font-bold">DELIVERED</span>
-                                    </td>
-                                    <td class="p-4">
-                                        <div class="flex items-center gap-2">
-                                            <input type="password" value="https://canva.com/invite/dummy-link" readonly class="bg-primary border border-slate-600 rounded px-3 py-1.5 text-white w-48 outline-none font-mono text-xs" id="key-2">
-                                            <button onclick="toggleKey('key-2')" class="text-slate-400 hover:text-accent p-1 transition-colors" title="Reveal Link">
-                                                <i class="fa-solid fa-eye" id="icon-key-2"></i>
-                                            </button>
-                                            <button onclick="copyKey('key-2')" class="text-slate-400 hover:text-accent p-1 transition-colors" title="Copy Link">
-                                                <i class="fa-solid fa-copy"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </main>
-            
+        <div class="flex items-center gap-3">
+          <a href="index.html#products" class="hidden sm:inline-flex btn-primary text-sm py-2.5 px-5" id="nav-shop">🛒 Shop Now</a>
+          <button id="menu-btn" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition" aria-label="Toggle mobile menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
         </div>
+      </div>
     </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden">
+      <a href="index.html"          class="mobile-nav-link" id="mob-home">🏠 Home</a>
+      <a href="index.html#products" class="mobile-nav-link" id="mob-products">📦 Products</a>
+      <a href="domain-hosting.html" class="mobile-nav-link" id="mob-domain">🌐 Domain & Hosting</a>
+      <a href="blog.html"           class="mobile-nav-link" id="mob-blog">📝 Blog</a>
+      <a href="account.html"        class="mobile-nav-link" id="mob-account">👤 Account</a>
+    </div>
+  </nav>
 
-    <!-- Footer -->
-    <footer class="bg-secondary border-t border-slate-800 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <a href="index.html" class="flex items-center gap-2 justify-center md:justify-start mb-2">
-                    <i class="fa-solid fa-laptop-code text-accent text-xl"></i>
-                    <span class="font-bold text-lg">Bengali <span class="text-accent">IT</span></span>
-                </a>
-                <p class="text-slate-500 text-sm">© 2024 Bengali IT. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <main>
 
-    <!-- Global Automations JS & Account Logic -->
-    <script>
-        function toggleKey(id) {
-            const input = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        }
-        
-        function copyKey(id) {
-            const input = document.getElementById(id);
-            // Change type temporarily to copy full text if hidden
-            const originalType = input.type;
-            input.type = 'text';
-            input.select();
-            document.execCommand("copy");
-            input.type = originalType;
-            
-            // Brief visual feedback
-            alert("Copied to clipboard!");
-        }
+    <!-- ════ ACCOUNT HERO ════ -->
+    <section style="background:linear-gradient(135deg,#0f0e1a 0%,#1a1040 60%,#0f0e1a 100%);padding:3rem 0;border-bottom:1px solid var(--glass-border);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+        <div class="section-tag mx-auto inline-block mb-3">👤 My Account</div>
+        <h1 class="section-title mb-2">Welcome to <span style="background:linear-gradient(135deg,#818cf8,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bengali IT</span></h1>
+        <p class="text-gray-400 max-w-sm mx-auto text-sm">Sign in to view your orders, download your digital keys, and manage subscriptions.</p>
+      </div>
+    </section>
 
-        // Chatbot Auto-open
-        setTimeout(() => {
-            const chatbot = document.createElement('div');
-            chatbot.className = 'fixed bottom-6 right-6 z-50';
-            chatbot.innerHTML = `
-                <div id="chat-window" class="hidden mb-4 bg-secondary border border-slate-700 rounded-xl w-72 shadow-2xl shadow-black overflow-hidden">
-                    <div class="bg-accent p-3 text-white font-bold flex justify-between items-center">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-robot"></i> Bengali IT Support</span>
-                        <button onclick="document.getElementById('chat-window').classList.add('hidden')" class="text-white hover:text-gray-200"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="p-4 text-sm text-slate-300 bg-primary">
-                        <div class="bg-secondary p-3 rounded-lg rounded-tl-none border border-slate-700 inline-block mb-2">
-                            👋 Welcome to Bengali IT! Need help with your orders?
-                        </div>
-                    </div>
-                    <div class="p-3 bg-secondary border-t border-slate-700 flex gap-2">
-                        <input type="text" placeholder="Type a message..." class="flex-1 bg-primary border border-slate-600 rounded px-3 py-1.5 text-sm text-white focus:outline-none focus:border-accent">
-                        <button class="bg-accent text-white px-3 py-1.5 rounded hover:bg-violet-700 transition-colors"><i class="fas fa-paper-plane"></i></button>
-                    </div>
+    <!-- ════ AUTH SECTION ════ -->
+    <section class="section-pad">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+
+          <!-- Left: Auth Card (3/5) -->
+          <div class="lg:col-span-3">
+            <div class="auth-card">
+
+              <!-- Tabs -->
+              <div class="flex border-b border-white/10" id="auth-tabs" role="tablist">
+                <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" onclick="switchTab('login')">🔑 Login</button>
+                <button class="auth-tab"        id="tab-register" role="tab" aria-selected="false" onclick="switchTab('register')">✨ Create Account</button>
+              </div>
+
+              <!-- LOGIN FORM -->
+              <div id="form-login" class="p-8">
+                <h2 class="text-white font-bold text-xl mb-1">Welcome back!</h2>
+                <p class="text-gray-500 text-sm mb-6">Login to access your digital products and order history.</p>
+
+                <!-- Social Login -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                  <button class="social-btn" id="btn-google-login">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.76A7.08 7.08 0 0 1 12 4.9c1.76 0 3.35.64 4.58 1.7l3.41-3.41A11.94 11.94 0 0 0 12 1C7.82 1 4.17 3.35 2.27 6.78l3 2.98Z"/><path fill="#FBBC05" d="M16.04 18.01A7.06 7.06 0 0 1 12 19.1a7.08 7.08 0 0 1-6.72-4.84l-3.01 2.32A11.97 11.97 0 0 0 12 23c2.9 0 5.57-1.03 7.62-2.73l-3.58-2.26Z"/><path fill="#4285F4" d="M23 12c0-.74-.07-1.45-.19-2.14H12v4.05h6.18a5.3 5.3 0 0 1-2.29 3.47l3.58 2.26C21.33 17.8 23 15.1 23 12Z"/><path fill="#34A853" d="M5.28 14.26A7.1 7.1 0 0 1 4.9 12c0-.79.13-1.56.37-2.28L2.27 6.78A11.97 11.97 0 0 0 1 12c0 1.93.46 3.76 1.27 5.38l3.01-2.12Z"/></svg>
+                    Google
+                  </button>
+                  <button class="social-btn" id="btn-facebook-login">
+                    <svg class="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook
+                  </button>
                 </div>
-                <button onclick="document.getElementById('chat-window').classList.toggle('hidden')" class="bg-accent hover:bg-violet-700 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-2xl ml-auto transition-transform hover:scale-110">
-                    <i class="fas fa-comment-dots"></i>
-                </button>
-            `;
-            document.body.appendChild(chatbot);
-            // Open it automatically
-            document.getElementById('chat-window').classList.remove('hidden');
-        }, 7000);
 
-        // FOMO Popup
-        const fomoMessages = [
-            "Faheem from Dhaka just purchased <strong>Windows 11 Pro</strong>",
-            "Sadia from Sylhet just purchased <strong>Canva Pro</strong>",
-            "Karim from Chittagong just purchased <strong>Kaspersky Antivirus</strong>",
-            "Nusrat from Rajshahi just purchased <strong>Office 365</strong>"
-        ];
-        let fomoIndex = 0;
-        
-        const fomoWidget = document.createElement('div');
-        fomoWidget.className = 'fixed bottom-6 left-6 z-50 bg-secondary border border-slate-700 rounded-lg p-3 shadow-xl transition-all duration-500 opacity-0 transform translate-y-4 flex items-center gap-3 max-w-sm pointer-events-none';
-        fomoWidget.innerHTML = `
-            <div class="bg-success/20 text-success w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-check"></i>
-            </div>
-            <div>
-                <p id="fomo-text" class="text-slate-200 text-sm font-medium"></p>
-                <p class="text-slate-500 text-xs mt-1"><i class="fa-solid fa-shield-halved text-success"></i> Verified Purchase • Just now</p>
-            </div>
-        `;
-        document.body.appendChild(fomoWidget);
+                <div class="divider"><span>or login with email</span></div>
 
-        setInterval(() => {
-            document.getElementById('fomo-text').innerHTML = fomoMessages[fomoIndex];
-            fomoIndex = (fomoIndex + 1) % fomoMessages.length;
-            
-            // Show
-            fomoWidget.classList.remove('opacity-0', 'translate-y-4');
-            fomoWidget.classList.add('opacity-100', 'translate-y-0');
-            
-            // Hide after 4 seconds
-            setTimeout(() => {
-                fomoWidget.classList.remove('opacity-100', 'translate-y-0');
-                fomoWidget.classList.add('opacity-0', 'translate-y-4');
-            }, 4000);
-        }, 10000);
-    </script>
+                <form id="login-form" novalidate>
+                  <div class="space-y-4">
+
+                    <div>
+                      <label class="form-label" for="login-email">Email Address</label>
+                      <div class="input-icon-wrap">
+                        <span class="input-icon">✉️</span>
+                        <input type="email" id="login-email" class="form-input" placeholder="your@email.com" autocomplete="email" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex items-center justify-between mb-1">
+                        <label class="form-label mb-0" for="login-password">Password</label>
+                        <a href="#" class="text-indigo-400 text-xs hover:text-indigo-300 transition" id="forgot-password-link">Forgot password?</a>
+                      </div>
+                      <div class="input-icon-wrap" style="position:relative;">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="login-password" class="form-input" placeholder="Enter your password" autocomplete="current-password" style="padding-right:3rem;" />
+                        <button type="button" id="toggle-login-pw" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#64748b;cursor:pointer;font-size:1rem;" aria-label="Show/hide password">👁</button>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 cursor-pointer" id="remember-me-wrap" onclick="toggleCheck('remember-check')">
+                      <div class="checkbox-custom" id="remember-check"></div>
+                      <span class="text-sm text-gray-400">Remember me on this device</span>
+                    </div>
+
+                    <div id="login-error" class="hidden text-red-400 text-sm py-2 px-3 rounded-xl" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);"></div>
+
+                    <button type="submit" class="btn-primary w-full justify-center text-base py-3.5" id="btn-login">
+                      🔑 Login to My Account
+                    </button>
+
+                  </div>
+                </form>
+
+                <p class="text-center text-sm text-gray-500 mt-5">
+                  Don't have an account?
+                  <button class="text-indigo-400 hover:text-indigo-300 font-semibold transition" onclick="switchTab('register')" id="go-register">Create one free →</button>
+                </p>
+              </div>
+
+              <!-- REGISTER FORM -->
+              <div id="form-register" class="p-8 hidden">
+                <h2 class="text-white font-bold text-xl mb-1">Create your account</h2>
+                <p class="text-gray-500 text-sm mb-6">Join 5,000+ Bangladeshis buying digital products at the best price.</p>
+
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                  <button class="social-btn" id="btn-google-reg">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.76A7.08 7.08 0 0 1 12 4.9c1.76 0 3.35.64 4.58 1.7l3.41-3.41A11.94 11.94 0 0 0 12 1C7.82 1 4.17 3.35 2.27 6.78l3 2.98Z"/><path fill="#FBBC05" d="M16.04 18.01A7.06 7.06 0 0 1 12 19.1a7.08 7.08 0 0 1-6.72-4.84l-3.01 2.32A11.97 11.97 0 0 0 12 23c2.9 0 5.57-1.03 7.62-2.73l-3.58-2.26Z"/><path fill="#4285F4" d="M23 12c0-.74-.07-1.45-.19-2.14H12v4.05h6.18a5.3 5.3 0 0 1-2.29 3.47l3.58 2.26C21.33 17.8 23 15.1 23 12Z"/><path fill="#34A853" d="M5.28 14.26A7.1 7.1 0 0 1 4.9 12c0-.79.13-1.56.37-2.28L2.27 6.78A11.97 11.97 0 0 0 1 12c0 1.93.46 3.76 1.27 5.38l3.01-2.12Z"/></svg>
+                    Google
+                  </button>
+                  <button class="social-btn" id="btn-fb-reg">
+                    <svg class="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    Facebook
+                  </button>
+                </div>
+
+                <div class="divider"><span>or register with email</span></div>
+
+                <form id="register-form" novalidate>
+                  <div class="space-y-4">
+
+                    <div class="grid grid-cols-2 gap-3">
+                      <div>
+                        <label class="form-label" for="reg-first">First Name</label>
+                        <input type="text" id="reg-first" class="form-input" placeholder="Rahim" autocomplete="given-name" />
+                      </div>
+                      <div>
+                        <label class="form-label" for="reg-last">Last Name</label>
+                        <input type="text" id="reg-last" class="form-input" placeholder="Uddin" autocomplete="family-name" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="form-label" for="reg-email">Email Address</label>
+                      <div class="input-icon-wrap">
+                        <span class="input-icon">✉️</span>
+                        <input type="email" id="reg-email" class="form-input" placeholder="your@email.com" autocomplete="email" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="form-label" for="reg-phone">Phone Number</label>
+                      <div class="input-icon-wrap">
+                        <span class="input-icon">📱</span>
+                        <input type="tel" id="reg-phone" class="form-input" placeholder="01XXXXXXXXX" autocomplete="tel" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="form-label" for="reg-password">Password</label>
+                      <div class="input-icon-wrap" style="position:relative;">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="reg-password" class="form-input" placeholder="Create a strong password" autocomplete="new-password" style="padding-right:3rem;" oninput="checkStrength(this.value)" />
+                        <button type="button" id="toggle-reg-pw" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#64748b;cursor:pointer;font-size:1rem;" aria-label="Show/hide password">👁</button>
+                      </div>
+                      <!-- Strength indicator -->
+                      <div class="flex gap-1.5 mt-2" id="strength-bars">
+                        <div class="strength-bar" id="sb-1"></div>
+                        <div class="strength-bar" id="sb-2"></div>
+                        <div class="strength-bar" id="sb-3"></div>
+                        <div class="strength-bar" id="sb-4"></div>
+                      </div>
+                      <div class="text-xs text-gray-500 mt-1" id="strength-label">Use 8+ characters with numbers & symbols</div>
+                    </div>
+
+                    <div class="flex items-start gap-3 cursor-pointer" id="terms-wrap" onclick="toggleCheck('terms-check')">
+                      <div class="checkbox-custom mt-0.5" id="terms-check"></div>
+                      <span class="text-sm text-gray-400">I agree to the <a href="#" class="text-indigo-400 hover:underline" onclick="event.stopPropagation()">Terms of Service</a> and <a href="#" class="text-indigo-400 hover:underline" onclick="event.stopPropagation()">Privacy Policy</a></span>
+                    </div>
+
+                    <div id="reg-error" class="hidden text-red-400 text-sm py-2 px-3 rounded-xl" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);"></div>
+
+                    <button type="submit" class="btn-primary w-full justify-center text-base py-3.5" id="btn-register">
+                      ✨ Create Free Account
+                    </button>
+
+                  </div>
+                </form>
+
+                <p class="text-center text-sm text-gray-500 mt-5">
+                  Already have an account?
+                  <button class="text-indigo-400 hover:text-indigo-300 font-semibold transition" onclick="switchTab('login')" id="go-login">Login →</button>
+                </p>
+              </div>
+
+              <!-- SUCCESS STATE (hidden by default) -->
+              <div id="form-success" class="p-8 text-center hidden">
+                <div class="text-6xl mb-4 animate-bounce">🎉</div>
+                <h2 class="text-white font-bold text-2xl mb-2">Welcome aboard!</h2>
+                <p class="text-gray-400 mb-6">Your account has been created. Start exploring our digital products!</p>
+                <a href="index.html#products" class="btn-primary inline-flex" id="success-explore">🛒 Explore Products</a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Benefits (2/5) -->
+          <div class="lg:col-span-2 space-y-6">
+
+            <!-- Account Benefits -->
+            <div class="glass-card p-6" id="benefits-card">
+              <h3 class="text-white font-bold text-lg mb-4">🎁 Why Create an Account?</h3>
+              <div>
+                <div class="benefit-item">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(34,197,94,0.12);">📦</div>
+                  <div>
+                    <div class="text-white font-semibold text-sm">Order History</div>
+                    <div class="text-gray-500 text-xs mt-0.5">Access all your past purchases anytime</div>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(79,70,229,0.15);">🔑</div>
+                  <div>
+                    <div class="text-white font-semibold text-sm">Digital Key Vault</div>
+                    <div class="text-xs text-gray-500 mt-0.5">Re-download your keys at any time</div>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(245,158,11,0.12);">🏷️</div>
+                  <div>
+                    <div class="text-white font-semibold text-sm">Exclusive Discounts</div>
+                    <div class="text-xs text-gray-500 mt-0.5">Members-only deals up to 30% off</div>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(239,68,68,0.1);">⚡</div>
+                  <div>
+                    <div class="text-white font-semibold text-sm">Faster Checkout</div>
+                    <div class="text-xs text-gray-500 mt-0.5">Saved payment info for quick purchases</div>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:rgba(168,85,247,0.12);">🛠️</div>
+                  <div>
+                    <div class="text-white font-semibold text-sm">Priority Support</div>
+                    <div class="text-xs text-gray-500 mt-0.5">Faster responses on WhatsApp & chat</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="glass-card p-5" id="trust-card">
+              <h4 class="text-white font-semibold text-sm mb-4">🔒 Your Data is Safe</h4>
+              <div class="space-y-3 text-sm text-gray-400">
+                <div class="flex items-center gap-2"><span class="text-green-400">✅</span> SSL 256-bit encryption</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✅</span> No card details stored</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✅</span> GDPR-compliant privacy</div>
+                <div class="flex items-center gap-2"><span class="text-green-400">✅</span> Two-factor auth available</div>
+              </div>
+            </div>
+
+            <!-- Payment Badges -->
+            <div class="glass-card p-4 text-center" id="payment-card">
+              <p class="text-xs text-gray-500 font-semibold mb-3">ACCEPTED PAYMENT METHODS</p>
+              <img src="assets/images/payment-badge.png" alt="bKash Nagad Rocket payment methods" class="w-full max-w-xs mx-auto rounded-xl" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer pt-10 pb-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12">
+        <div class="md:col-span-2">
+          <div class="footer-logo mb-3">Bengali IT</div>
+          <p class="text-gray-400 text-sm max-w-xs leading-relaxed">Bangladesh's trusted source for 100% genuine digital products. Instant delivery, best prices, local payment support.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Products</h4>
+          <a href="product.html"    class="footer-link">Windows 11 Pro Key</a>
+          <a href="product.html"    class="footer-link">Microsoft Office 365</a>
+          <a href="product.html"    class="footer-link">Canva Pro</a>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4 uppercase tracking-wide">Company</h4>
+          <a href="domain-hosting.html" class="footer-link">Domain & Hosting</a>
+          <a href="blog.html"           class="footer-link">Blog</a>
+          <a href="account.html"        class="footer-link">My Account</a>
+          <a href="#"                   class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div class="border-t border-white/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <img src="assets/images/payment-badge.png" alt="bKash Nagad Rocket" class="h-10 object-contain rounded-lg" />
+        <span class="text-gray-600 text-xs">© 2024 Bengali IT. All rights reserved. Made with ❤️ in Bangladesh.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Tab switching ── */
+    function switchTab(tab) {
+      const loginBtn  = document.getElementById('tab-login');
+      const regBtn    = document.getElementById('tab-register');
+      const loginForm = document.getElementById('form-login');
+      const regForm   = document.getElementById('form-register');
+
+      if (tab === 'login') {
+        loginBtn.classList.add('active');    regBtn.classList.remove('active');
+        loginForm.classList.remove('hidden'); regForm.classList.add('hidden');
+      } else {
+        regBtn.classList.add('active');      loginBtn.classList.remove('active');
+        regForm.classList.remove('hidden');  loginForm.classList.add('hidden');
+      }
+    }
+
+    /* ── Checkbox toggle ── */
+    function toggleCheck(id) {
+      document.getElementById(id).classList.toggle('checked');
+    }
+
+    /* ── Password visibility ── */
+    function togglePw(inputId, btnId) {
+      const inp = document.getElementById(inputId);
+      const btn = document.getElementById(btnId);
+      if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+      else                         { inp.type = 'password'; btn.textContent = '👁'; }
+    }
+    document.getElementById('toggle-login-pw').addEventListener('click', () => togglePw('login-password', 'toggle-login-pw'));
+    document.getElementById('toggle-reg-pw').addEventListener('click',   () => togglePw('reg-password',   'toggle-reg-pw'));
+
+    /* ── Password strength ── */
+    function checkStrength(pw) {
+      let score = 0;
+      if (pw.length >= 8)               score++;
+      if (/[A-Z]/.test(pw))             score++;
+      if (/[0-9]/.test(pw))             score++;
+      if (/[^A-Za-z0-9]/.test(pw))      score++;
+
+      const bars   = [document.getElementById('sb-1'), document.getElementById('sb-2'), document.getElementById('sb-3'), document.getElementById('sb-4')];
+      const label  = document.getElementById('strength-label');
+      const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
+      const texts  = ['Too weak', 'Weak', 'Good', 'Strong ✅'];
+
+      bars.forEach((b, i) => {
+        b.style.background = i < score ? colors[score - 1] : 'rgba(255,255,255,0.08)';
+      });
+      label.textContent = score > 0 ? texts[score - 1] : 'Use 8+ characters with numbers & symbols';
+      label.style.color = score > 0 ? colors[score - 1] : '#64748b';
+    }
+
+    /* ── Login form submit ── */
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass  = document.getElementById('login-password').value;
+      const err   = document.getElementById('login-error');
+
+      if (!email || !pass) {
+        err.textContent = '⚠️ Please fill in all fields.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (!email.includes('@')) {
+        err.textContent = '⚠️ Please enter a valid email address.';
+        err.classList.remove('hidden');
+        return;
+      }
+
+      err.classList.add('hidden');
+      const btn = document.getElementById('btn-login');
+      btn.textContent = '⏳ Logging in…';
+      btn.disabled = true;
+
+      // Simulate login
+      setTimeout(() => {
+        document.getElementById('form-login').classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+        document.querySelector('.auth-card .flex.border-b').classList.add('hidden');
+      }, 1500);
+    });
+
+    /* ── Register form submit ── */
+    document.getElementById('register-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass  = document.getElementById('reg-password').value;
+      const terms = document.getElementById('terms-check').classList.contains('checked');
+      const err   = document.getElementById('reg-error');
+
+      if (!email || !pass) {
+        err.textContent = '⚠️ Please fill in all required fields.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (!terms) {
+        err.textContent = '⚠️ Please accept the Terms of Service to continue.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (pass.length < 8) {
+        err.textContent = '⚠️ Password must be at least 8 characters.';
+        err.classList.remove('hidden');
+        return;
+      }
+
+      err.classList.add('hidden');
+      const btn = document.getElementById('btn-register');
+      btn.textContent = '⏳ Creating account…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('form-register').classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+        document.querySelector('.auth-card .flex.border-b').classList.add('hidden');
+      }, 1500);
+    });
+  </script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/fomo.js"></script>
+  <script src="assets/js/chatbot.js"></script>
+
 </body>
 </html>
